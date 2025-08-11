@@ -13,6 +13,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Plus, MoreHorizontal, Edit, Trash2 } from "lucide-react"
 import { toast } from "sonner"
+import { generateSlug } from '@/lib/utils';
 
 interface Testimonial {
   id: string
@@ -66,13 +67,16 @@ export default function AdminTestimonials() {
         : "/api/admin/testimonials"
       
       const method = editingTestimonial ? "PUT" : "POST"
+
+      const slug = generateSlug(formData.name);
+      const payload = { ...formData, slug: slug };
       
       const response = await fetch(url, {
         method,
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       })
 
       if (response.ok) {
