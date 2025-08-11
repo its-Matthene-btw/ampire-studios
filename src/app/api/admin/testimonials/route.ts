@@ -6,6 +6,7 @@ import { z } from "zod"
 
 const testimonialSchema = z.object({
   name: z.string().min(1, "Name is required"),
+  slug: z.string().min(1, "Slug is required"), // The slug is now included in validation
   role: z.string().optional(),
   company: z.string().optional(),
   content: z.string().min(1, "Content is required"),
@@ -47,6 +48,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const validatedData = testimonialSchema.parse(body)
 
+    // validatedData now contains the slug, so this will work correctly
     const testimonial = await db.testimonial.create({
       data: {
         ...validatedData,
