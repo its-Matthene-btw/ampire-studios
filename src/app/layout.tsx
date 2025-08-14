@@ -27,6 +27,10 @@ export const metadata: Metadata = {
       "We craft stunning websites, powerful brands, and effective digital strategies to help your business thrive online.",
     type: "website",
   },
+  // --- GOOGLE VERIFICATION ADDED HERE ---
+  verification: {
+    google: "MRK0haNBJ8cZp4ZKluzA3-kBNWEcwn8o7L9txbVe-kA",
+  },
 };
 
 export default function RootLayout({
