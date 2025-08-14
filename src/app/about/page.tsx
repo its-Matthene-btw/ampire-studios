@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import ProcessSection from "@/components/ProcessSection" // Importing the ProcessSection component
 
 export default function About() {
   const [isDarkMode, setIsDarkMode] = useState(false)
@@ -350,33 +351,7 @@ export default function About() {
       </section>
 
       {/* Process Section */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <span className="text-primary-light dark:text-primary-dark font-semibold">OUR PROCESS</span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4">How We Bring Your Vision to Life</h2>
-            <p className="max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
-              Our structured approach ensures efficiency, transparency, and outstanding results at every stage.
-            </p>
-          </div>
-          
-          <div className="max-w-4xl mx-auto">
-            <div className="relative">
-              {processSteps.map((step, index) => (
-                <div key={index} className="process-step relative pl-16 pb-12">
-                  <div className="absolute left-0 top-0 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold z-10" style={{backgroundColor: step.color.replace('bg-', '').replace('dark:', '').replace('light:', '')}}>
-                    {step.step}
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">{step.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    {step.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <ProcessSection />
 
       {/* Testimonials Section */}
       <section className="py-16 md:py-24 bg-gray-100 dark:bg-gray-800">
